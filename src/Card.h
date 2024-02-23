@@ -14,7 +14,7 @@ class Card
     public:
         Card();
         Card(uint16_t cardNameId, uint16_t cardColorId, uint16_t cardPower);
-
+        ~Card();
         void setCardNameId(uint16_t id);
         void setCardColorId(uint16_t id);
         void setCardPower(uint16_t x);

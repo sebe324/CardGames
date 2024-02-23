@@ -6,9 +6,17 @@ using namespace std;
 int main()
 {	
 	Card c1(4,1,10);
-	std::cout<<c1;
+	std::cout<<c1<<'\n';
+	{
 	CardDeck cd(true);
-	cout<<cd;
+	cd.fillDeck();
+	cout<<cd.cards.size()<<'\n';
+	CardDeck cd2(cd);
+	cd.cards[0]->setCardNameId(7);
+	cout<<*cd.cards[0]<<" 1 "<<endl;
+	cout<<*cd2.cards[0]<<" 2 "<<endl;
+	
+	}
 	int x;
 	cin>>x;
 	return 0;

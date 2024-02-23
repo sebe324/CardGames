@@ -17,6 +17,10 @@ Card::Card(uint16_t cardNameId, uint16_t cardColorId, uint16_t cardPower)
     m_cardPower=cardPower;
 }
 
+Card::~Card()
+{
+    std::cout<<"DELETED "<<*this<<'\n';
+}
 void Card::setCardNameId(uint16_t id)
 {
     if(id > 0 && id < cardNames.size())
