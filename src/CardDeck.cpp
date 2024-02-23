@@ -1,4 +1,13 @@
 #include "CardDeck.h"
+#include <random>
+
+int generateRandomInt(int min, int max) {
+    std::random_device rd;   // Get a random seed from the operating system
+    std::mt19937 mt(rd());  // Use the Mersenne Twister 19937 generator
+    std::uniform_int_distribution<int> dist(min, max); // Distribute results between min and max inclusive
+
+    return dist(mt);  // Generate a random integer
+}
 
 CardDeck::CardDeck(bool visibility)
 {
@@ -55,7 +64,17 @@ void CardDeck::moveCardToDeck(const CardDeck &cardDeck, uint8_t cardId)
 
 void CardDeck::shuffle()
 {
+    std::vector<Card*> tmpCards;
+    uint64_t s = cards.size();
+    for(size_t i = 0; i < s; i++)
+    {
+        int index = generateRandomInt(0,cards.size()-1);
+        tmpCards.push_back(cards[index]);
+        cards.erase(cards.begin()+index);
+    }
 
+    cards = std::vector<Card*>(tmpCards);
+    
 }
 
 void CardDeck::organize()
