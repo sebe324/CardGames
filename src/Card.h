@@ -12,6 +12,7 @@ class Card
         uint16_t m_cardColorId;
         uint16_t m_cardPower;
     public:
+        Card();
         Card(uint16_t cardNameId, uint16_t cardColorId, uint16_t cardPower);
 
         void setCardNameId(uint16_t id);

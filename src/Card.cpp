@@ -4,6 +4,12 @@ std::vector<std::string> Card::cardNames={"Ace","Two","Three","Four","Five","Six
 
 std::vector<std::string> Card::cardColors={"Hearts", "Diamonds", "Spades", "Clubs"};
 
+Card::Card()
+{
+    m_cardNameId=0;
+    m_cardColorId=0;
+    m_cardPower=0;
+}
 Card::Card(uint16_t cardNameId, uint16_t cardColorId, uint16_t cardPower)
 {
     m_cardNameId=cardNameId;
