@@ -14,6 +14,8 @@ int main()
 	cd.shuffle();
 	cout<<cd<<'\n';	
 	cout<<cd.cards.size()<<'\n';
+	cd.organize();
+	cout<<cd<<'\n';
 	}
 	int x;
 	cin>>x;

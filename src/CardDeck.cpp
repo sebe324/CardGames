@@ -21,7 +21,7 @@ CardDeck::CardDeck(CardDeck& cardDeck)
     for(auto c : cardDeck.cards)
     {
         Card* card = new Card(c->getCardNameId(), c->getCardColorId(), c->getCardPower());
-        cards.push_back(card);
+        addCard(card);
     }
 }
 
@@ -30,9 +30,9 @@ CardDeck::~CardDeck()
     for(auto c : cards) delete c;
 }
 
-void CardDeck::addCard(const Card *card)
+void CardDeck::addCard(Card* card)
 {
-
+    cards.push_back(card);
 }
 
 void CardDeck::fillDeck()
@@ -42,22 +42,23 @@ void CardDeck::fillDeck()
             cards.push_back(new Card(n,c,0));
 }
 
-void CardDeck::removeCard(uint8_t cardId)
+void CardDeck::removeCard(uint8_t index)
 {
-
+    cards.erase(cards.begin()+index);
 }
 
 void CardDeck::removeTopCard()
 {
-
+    cards.erase(cards.end()-1);
 }
 
-void CardDeck::addCardFromDeck(const CardDeck &cardDeck, uint8_t cardId)
+void CardDeck::addCardFromDeck(CardDeck &cardDeck, uint8_t cardId)
 {
-
+    addCard(cardDeck.cards[cardId]);
+    cardDeck.removeCard(cardId);
 }
 
-void CardDeck::moveCardToDeck(const CardDeck &cardDeck, uint8_t cardId)
+void CardDeck::moveCardToDeck(CardDeck &cardDeck, uint8_t cardId)
 {
 
 }
@@ -70,16 +71,24 @@ void CardDeck::shuffle()
     {
         int index = generateRandomInt(0,cards.size()-1);
         tmpCards.push_back(cards[index]);
-        cards.erase(cards.begin()+index);
+        removeCard(index);
     }
 
     cards = std::vector<Card*>(tmpCards);
     
 }
 
+bool cmp(Card const *const a, Card const *const b)
+{   
+    if (a->getCardNameId() < b->getCardNameId()) return true;
+    else if (a->getCardNameId() == b->getCardNameId()) return a->getCardColorId() < b->getCardColorId() ? true : false;
+    else return false;
+}
+
+
 void CardDeck::organize()
 {
-
+    std::sort(cards.begin(), cards.end(), &cmp);
 }
 
 std::ostream& operator<<(std::ostream& os, CardDeck& cardDeck)

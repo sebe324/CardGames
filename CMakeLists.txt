@@ -12,13 +12,13 @@ endif()
 project ("CardGames")
 
 set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_PREFIX_PATH "C:\\libraries\\SFML-2.6.0-VC")
+set(CMAKE_PREFIX_PATH "C:\\Libraries\\SFML-2.6.0VC")
 find_package(SFML 2.6 COMPONENTS system graphics window REQUIRED)
 
 add_subdirectory ("src")
 
 cmake_policy(SET CMP0079 NEW)
-target_include_directories(CardGames PRIVATE "C:\\libraries\\SFML-2.6.0-VC\\include")
+target_include_directories(CardGames PRIVATE "C:\\Libraries\\SFML-2.6.0VC\\include")
 target_link_libraries( CardGames PRIVATE
                     sfml-system
                     sfml-window

@@ -2,7 +2,7 @@
 
 std::vector<std::string> Card::cardNames={"Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King"};
 
-std::vector<std::string> Card::cardColors={"Hearts", "Diamonds", "Spades", "Clubs"};
+std::vector<std::string> Card::cardColors={"Hearts", "Diamonds", "Clubs", "Spades"};
 
 Card::Card()
 {
@@ -38,27 +38,27 @@ void Card::setCardPower(uint16_t x)
     if(x > 0) m_cardPower=x;
 }
 
-uint16_t Card::getCardNameId()
+uint16_t Card::getCardNameId() const
 {
     return m_cardNameId;
 }
 
-uint16_t Card::getCardColorId()
+uint16_t Card::getCardColorId() const
 {
     return m_cardColorId;
 }
 
-uint16_t Card::getCardPower()
+uint16_t Card::getCardPower() const
 {
     return m_cardPower;
 }
 
-std::string Card::getCardName()
+std::string Card::getCardName() const
 {
     return cardNames[m_cardNameId];
 }
 
-std::string Card::getCardColor()
+std::string Card::getCardColor() const
 {
     return cardColors[m_cardColorId];
 }

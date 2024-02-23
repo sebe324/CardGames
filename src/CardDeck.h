@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdint>
 #include <iostream>
+#include <algorithm>
 
 #include <SFML/Graphics.hpp>
 
@@ -17,12 +18,12 @@ class CardDeck : public sf::Drawable
         CardDeck(bool visibility);
         CardDeck(CardDeck& cardDeck);
         ~CardDeck();
-        void addCard(const Card* card);
+        void addCard(Card* card);
         void fillDeck();
-        void removeCard(uint8_t cardId);
+        void removeCard(uint8_t index);
         void removeTopCard();
-        void addCardFromDeck(const CardDeck& cardDeck, uint8_t cardId);
-        void moveCardToDeck(const CardDeck& cardDeck, uint8_t cardId);
+        void addCardFromDeck(CardDeck& cardDeck, uint8_t cardId);
+        void moveCardToDeck(CardDeck& cardDeck, uint8_t cardId);
         void shuffle();
         void organize();
 
